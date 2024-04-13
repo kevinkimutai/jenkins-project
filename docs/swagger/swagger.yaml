@@ -1,0 +1,66 @@
+basePath: /api/v1
+definitions:
+  domain.DataResponse:
+    properties:
+      data: {}
+      message:
+        type: string
+      status_code:
+        type: integer
+    type: object
+  domain.ErrorResponse:
+    properties:
+      message:
+        type: string
+      status_code:
+        type: integer
+    type: object
+  domain.Rating:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      movie_id:
+        type: integer
+      rating:
+        type: number
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  description: Get movies and its ratings API.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Movie API
+  version: "1.0"
+paths:
+  /rating:
+    post:
+      consumes:
+      - application/json
+      description: Create Rating
+      parameters:
+      - description: Create Rating
+        in: body
+        name: book
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Rating'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: success
+          schema:
+            $ref: '#/definitions/domain.DataResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/domain.ErrorResponse'
+      summary: Create a new movie rating
+      tags:
+      - rating
+swagger: "2.0"
