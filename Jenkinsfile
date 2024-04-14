@@ -8,7 +8,7 @@ pipeline {
             steps {
                 echo '--- Checking out the code from version control ---'
                 // Checkout your code from version control (e.g., Git)
-                git 'https://github.com/kevinkimutai/jenkins-project.git'
+                 git branch: 'main', url: 'https://github.com/kevinkimutai/jenkins-project.git'
             }
         }
         
